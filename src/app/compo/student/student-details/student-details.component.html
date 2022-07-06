@@ -1,0 +1,94 @@
+<div class="container">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <h3>User Details</h3>
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-left">
+              <button 
+              styleSheetFile="../../../assets/css/main.css" 
+              class="btn btn-success" 
+              printTittle="list of data" 
+              printSectionId="htmlData"
+              ngxPrint
+              >Print</button>
+              </div>
+              <div class="container" id="htmlData">  
+
+              <table class="table table.stiped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Second Name</th>
+                    <th>Las tName</th>
+                    <th>Phone</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Course Name</th>
+                    <th>Course Year</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="
+                  let x of student
+                    | paginate
+                      : {
+                          itemsPerPage: tableSize,
+                          currentPage: page,
+                          totalItems: count
+                        };
+                  let i = index
+                ">
+                    <td>{{i+1}}</td>
+                    <td>{{x.fname}}</td>
+                    <td>{{x.scname}}</td>
+                    <td>{{x.lname}}</td>
+                    <td>{{x.phone}}</td>
+                    <td>{{x.age}}</td>
+                    <td>{{x.gender}}</td>
+                    <td>{{x.cname}}</td>
+                    <td>{{x.lodate}}</td>
+                    <td>
+                      <!-- <button (click) ="view(x.id)"class="btn btn-success">view</button> -->
+                      
+                      <button (click) ="update(x.id)" class="btn btn-primary">update</button>
+                      <button (click) ="delete(x.id)" class="btn btn-danger">delete</button>
+                    </td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+               </div>
+                  <div class="d-flex justify-content-center">
+                    <pagination-controls
+                    previousLabel="Prev"
+                    nextLabel="Next"
+                    (pageChange)="onTableDataChange($event)"
+                  >
+                  </pagination-controls>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+$scope.Export = function () {
+                html2canvas(document.getElementById('tblSudent'), {
+                    onrendered: function (canvas) {
+                        var data = canvas.toDataURL();
+                        var docDefinition = {
+                            content: [{
+                                image: data,
+                                width: 500
+                            }]
+                        };
+                        pdfMake.createPdf(docDefinition).download("Table.pdf");
+                    }
+                });
+            }
+</script>

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+          <div class="card-header">
+              <h3>User Details</h3>
+          </div>
+          <div class="card-body">
+              <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th width="10%">#</th>
+                      <th width="45%">Year Of Study</th>
+                      <th width="25%%">Action</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let x of year let i = index">
+                        <td>{{i+1}}</td>
+                    <td>{{x.lodate}}</td>
+                    <td >
+                       <button class="btn btn-success">update</button>
+                       
+                        <button (click) = "delete(x.id)" class="btn btn-danger">delete</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="d-flex justify-content-center">
+           <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                  <h3>Add Course</h3>
+              </div>
+              <div class="card-body">
+                  <form [formGroup]="insert_subject" (ngSubmit)="submit()">
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Subject Name</label>
+                        <input type="email" class="form-control" formControlName="subject_name" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+              </div>
+          </div>
+           </div>
+        </div>
+    </div>
+</div>
+

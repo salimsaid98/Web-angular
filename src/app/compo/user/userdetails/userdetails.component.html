@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3>User Details</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th width="20%">#</th>
+                        <th width="50%">Username</th>
+                        <th width="20%%">Action</th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="
+                      let x of users
+                        | paginate
+                          : {
+                              itemsPerPage: tableSize,
+                              currentPage: page,
+                              totalItems: count
+                            };
+                      let i = index
+                    ">
+                          <td>{{i+1}}</td>
+                      <td>{{x.username}}</td>
+                      <td >
+                         <button (click) = "update(x.id)" class="btn btn-success">update</button>
+                         
+                          <button (click) = "delete(x.id)" class="btn btn-danger">delete</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="d-flex justify-content-center">
+                    <pagination-controls
+                    previousLabel="Prev"
+                    nextLabel="Next"
+                    (pageChange)="onTableDataChange($event)"
+                  >
+                  </pagination-controls>
+                  </div>
+
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

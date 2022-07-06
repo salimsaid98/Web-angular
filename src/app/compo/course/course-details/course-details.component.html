@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+          <div class="card-header">
+              <h3>User Details</h3>
+          </div>
+          <div class="card-body">
+              <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th width="5%">#</th>
+                      <th width="20%">Course Name</th>
+                      <th width="55%">Course Description</th>
+                      <th width="20%%">Action</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let x of course let i = index">
+                        <td>{{i+1}}</td>
+                    <td>{{x.cname}}</td>
+                    <td>{{x.cdescription}}</td>
+                    <td >
+                       <button (click) = "update(x.id)" class="btn btn-success">update</button>
+                       
+                        <button (click) = "delete(x.id)" class="btn btn-danger">delete</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
